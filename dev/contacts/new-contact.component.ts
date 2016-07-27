@@ -11,19 +11,31 @@ import {Contact} from './contact';
         <form #myForm="ngForm" class="contact" (ngSubmit)="onSubmit()">
             <div> 
                 <label for="firstname"> Firstname: </label>  
-                <input type="text" id="firstname" ngControl="firstname" [(ngModel)]="newContact.firstname" required />
+                <input type="text" id="firstname" 
+                    ngControl="firstname" 
+                    [(ngModel)]="newContact.firstname" 
+                    required />
             </div>
             <div> 
                 <label for="lastname"> Lastname: </label>  
-                <input type="text" id="lastname" ngControl="lastname" [(ngModel)]="newContact.lastname" required/>
+                <input type="text" id="lastname" 
+                    ngControl="lastname" 
+                    [(ngModel)]="newContact.lastname" 
+                    required/>
             </div>
             <div> 
                 <label for="telefon"> Phonenumber: </label>  
-                <input type="text" id="telefon"  ngControl="telefon" [(ngModel)]="newContact.telefon" required />
+                <input type="text" id="telefon"  
+                    ngControl="telefon" 
+                    [(ngModel)]="newContact.telefon" 
+                    required />
             </div>
             <div> 
                 <label for="email"> E-Mail: </label> 
-                <input type="text" id="email" ngControl="email" [(ngModel)]="newContact.email" required />
+                <input type="text" id="email" 
+                    ngControl="email" 
+                    [(ngModel)]="newContact.email" 
+                    required />
             </div>
             <button type="submit">Create Contact</button>
         </form>
