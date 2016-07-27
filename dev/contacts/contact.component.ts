@@ -4,7 +4,7 @@ import {Component, Input} from 'angular2/core';
     selector: 'contact',
     template: `
        
-        <div>
+        <div class="contact">
             <div> 
                 <label for="firstname"> Firstname: </label>  
                 <input [(ngModel)]="contact.firstname" type="text" id="firstname" />

@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {RouteConfig} from 'angular2/router';
 import {ContactListComponent} from './contacts/contact-list.component';
-import {NewContactComponent} from './contacts/new-contact.component';
+import {NewContactComponent} from '././contacts/new-contact.component';
 
 @Component({
     selector: 'my-app',
@@ -24,6 +24,7 @@ import {NewContactComponent} from './contacts/new-contact.component';
     {path: '/contacts', name: 'Contacts', component: ContactListComponent, useAsDefault: true},
     {path: '/newcontacts', name: 'NewContact', component: NewContactComponent},
 ])
+
 export class AppComponent {
     
 }

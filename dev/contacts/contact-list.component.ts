@@ -14,7 +14,8 @@ import {Contact} from './contact';
     <contact [contact]="selectedContact"></contact>
     `,
     directives: [ContactComponent],
-    providers: [ContactService]
+    providers: [ContactService],
+    styleUrls: ["../src/css/contact-list.css"]
 })
 
 export class ContactListComponent implements OnInit {
