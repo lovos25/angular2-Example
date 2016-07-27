@@ -8,49 +8,48 @@ import {Contact} from './contact';
     selector: 'new-contact',
     template: `
        <h1>New Contact</h1>
-        <div class="contact">
+        <form #myForm="ngForm" class="contact" (ngSubmit)="onSubmit()">
             <div> 
                 <label for="firstname"> Firstname: </label>  
-                <input type="text" id="firstname" #firstname />
+                <input type="text" id="firstname" ngControl="firstname" [(ngModel)]="newContact.firstname" required />
             </div>
             <div> 
                 <label for="lastname"> Lastname: </label>  
-                <input type="text" id="lastname" #lastname value="{{oldLastname}}"/>
+                <input type="text" id="lastname" ngControl="lastname" [(ngModel)]="newContact.lastname" required/>
             </div>
             <div> 
                 <label for="telefon"> Phonenumber: </label>  
-                <input type="text" id="telefon"  #telefon />
+                <input type="text" id="telefon"  ngControl="telefon" [(ngModel)]="newContact.telefon" required />
             </div>
             <div> 
                 <label for="email"> E-Mail: </label> 
-                <input type="text" id="email" #email />
+                <input type="text" id="email" ngControl="email" [(ngModel)]="newContact.email" required />
             </div>
-            <button (click)="onAddContact(firstname.value, lastname.value, telefon.value, email.value)" >Create Contact</button>
-        </div>
+            <button type="submit">Create Contact</button>
+        </form>
     `,
     providers: [ContactService]
 })
 
 export class NewContactComponent implements OnInit {
-    public oldLastname = "";
+    newContact: Contact;
+
     constructor(
         private _contactService: ContactService, 
         private _router: Router,
         private _routeParams: RouteParams) {}
 
-    onAddContact(firstname, lastname, telefon, email) {
-        let contact: Contact = {
-            firstname: firstname,
-            lastname: lastname,
-            telefon: telefon,
-            email: email
-        }
-
-        this._contactService.insertContact(contact);
+    onSubmit() {
+        this._contactService.insertContact(this.newContact);
         this._router.navigate(['Contacts']);
     }
 
     ngOnInit():any {
-        this.oldLastname = this._routeParams.get('lastname');
+        this.newContact = {
+            firstname: "",
+            lastname: this._routeParams.get('lastname'),
+            telefon: "",
+            email: "",
+        };
     }
 }
