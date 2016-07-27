@@ -1,5 +1,6 @@
-import {Component, Input} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
+import {RouteParams} from 'angular2/router';
 import {ContactService} from './contact.service';
 import {Contact} from './contact';
 
@@ -14,7 +15,7 @@ import {Contact} from './contact';
             </div>
             <div> 
                 <label for="lastname"> Lastname: </label>  
-                <input type="text" id="lastname" #lastname />
+                <input type="text" id="lastname" #lastname value="{{oldLastname}}"/>
             </div>
             <div> 
                 <label for="telefon"> Phonenumber: </label>  
@@ -30,9 +31,12 @@ import {Contact} from './contact';
     providers: [ContactService]
 })
 
-export class NewContactComponent {
-    constructor(private _contactService: ContactService, 
-        private _router: Router) {}
+export class NewContactComponent implements OnInit {
+    public oldLastname = "";
+    constructor(
+        private _contactService: ContactService, 
+        private _router: Router,
+        private _routeParams: RouteParams) {}
 
     onAddContact(firstname, lastname, telefon, email) {
         let contact: Contact = {
@@ -44,5 +48,9 @@ export class NewContactComponent {
 
         this._contactService.insertContact(contact);
         this._router.navigate(['Contacts']);
+    }
+
+    ngOnInit():any {
+        this.oldLastname = this._routeParams.get('lastname');
     }
 }

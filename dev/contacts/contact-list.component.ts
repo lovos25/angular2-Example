@@ -11,7 +11,7 @@ import {Contact} from './contact';
             (click)="onSelect(contact)"
             [class.clicked]="selectedContact === contact">{{contact.firstname}} {{contact.lastname}}</li>
     </ul>
-    <contact [contact]="selectedContact"></contact>
+    <contact [contact]="selectedContact" *ngIf="selectedContact != null"></contact>
     `,
     directives: [ContactComponent],
     providers: [ContactService],
@@ -20,7 +20,7 @@ import {Contact} from './contact';
 
 export class ContactListComponent implements OnInit {
     public contacts: Contact[];
-    public selectedContact = {};
+    public selectedContact = null;
 
     constructor(private _contactService: ContactService) {}
 
