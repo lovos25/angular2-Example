@@ -5,17 +5,10 @@ import {Contact} from './contact';
 
 @Component({
     selector: 'contact-list',
-    template: `
-    <ul>
-        <li *ngFor="#contact of contacts" 
-            (click)="onSelect(contact)"
-            [class.clicked]="selectedContact === contact">{{contact.firstname}} {{contact.lastname}}</li>
-    </ul>
-    <contact [contact]="selectedContact" *ngIf="selectedContact != null"></contact>
-    `,
+    templateUrl: '../../templates/contact-list.html',
+    styleUrls: ["../src/css/contact-list.css"],
     directives: [ContactComponent],
     providers: [ContactService],
-    styleUrls: ["../src/css/contact-list.css"]
 })
 
 export class ContactListComponent implements OnInit {
