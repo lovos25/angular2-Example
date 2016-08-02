@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {RouteConfig} from 'angular2/router';
+import {HTTPTestComponent} from './http-test.component';
 import {ContactListComponent} from './contacts/contact-list.component';
 import {NewContactComponent} from '././contacts/new-contact.component';
 import {NewContactFormbuilderComponent} from '././contacts/new-contact-formbuilder.component';
@@ -17,9 +18,29 @@ import {NewContactFormbuilderComponent} from '././contacts/new-contact-formbuild
         </header>
         <div class="main">
             <router-outlet></router-outlet>
+            <http-test></http-test>
+
+            <div class="pipes">
+                <h2>Date Pipe</h2>
+                <div>
+                    {{date | date:'fullDate'}}
+                </div>
+                <h2>Number Pipe</h2>
+                <div>
+                    {{4.51315456 | number:'1.2-2'}}
+                </div>
+                <h2>Currency Pipe</h2>
+                <div>
+                    {{4.51315456 | currency:'EUR':true:'1.2-2'}}
+                </div>
+                <h2>Stateful Pipe</h2>
+                <div>
+                    {{radomData | async}}
+                </div>
+            <div>
         </div>
     `,
-    directives: [ContactListComponent, NewContactComponent, ROUTER_DIRECTIVES]
+    directives: [ContactListComponent, HTTPTestComponent, NewContactComponent, ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
@@ -30,5 +51,8 @@ import {NewContactFormbuilderComponent} from '././contacts/new-contact-formbuild
 ])
 
 export class AppComponent {
-    
+    date = new Date();
+    radomData = new Promise((resolve, reject) =>{
+        setTimeout(() => resolve('Random data!'), 2000);
+    })
 }

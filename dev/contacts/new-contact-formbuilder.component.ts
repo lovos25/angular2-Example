@@ -30,7 +30,7 @@ export class NewContactFormbuilderComponent implements OnInit {
             'firstname': ['', Validators.required],
             'lastname': [this._routeParams.get('lastname'), Validators.required],
             'telefon': ['', Validators.required],
-            'email': ['', Validators.required],
+            'email': ['', Validators.minLength(5)],
         });
     }
 }
