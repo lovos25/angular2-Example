@@ -10,7 +10,6 @@ import {Component} from 'angular2/core';
         <button (click)="onTestPost()">Test POST Request</button>
         <p>Output: {{postData}}</p>
     `,
-    providers: [HTTPTestService] 
 })
 
 export class ChildComponent {
