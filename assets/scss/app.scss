@@ -324,3 +324,18 @@ nav {
     border: 1px solid #888;
 
 }
+
+.parent,
+.component {
+    margin: 32px 0;
+    padding: 16px;
+    background-color: #eee;
+    border: 1px solid #888;
+    
+    .child {
+        margin: 32px 0;
+        padding: 16px;
+        background-color: #b3d4fc;
+        border: 1px solid #888;
+    }
+}

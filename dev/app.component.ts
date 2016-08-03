@@ -7,6 +7,8 @@ import {NewContactComponent} from './contacts/new-contact.component';
 import {NewContactFormbuilderComponent} from './contacts/new-contact-formbuilder.component';
 import {ParentChildComponent} from './parent-child.component';
 import {PipesComponent} from './pipes.component';
+import {DependencyComponent} from './dependency/dependency.component';
+import {JqueryAppComponent} from './jquery/jquery-app.comopent';
 
 @Component({
     selector: 'my-app',
@@ -18,6 +20,8 @@ import {PipesComponent} from './pipes.component';
                 <a [routerLink]="['NewContactFormbuilder']">New Contacts with Formbuiler</a>
                 <a [routerLink]="['ParentChild']">Parent Child</a>
                 <a [routerLink]="['Pipes']">Pipes</a>
+                <a [routerLink]="['Dependency']">Dependency</a>
+                <a [routerLink]="['Jquery']">Jquery</a>
             </nav>
         </header>
         <div class="main">
@@ -25,7 +29,7 @@ import {PipesComponent} from './pipes.component';
             <!-- <http-test></http-test> -->
         </div>
     `,
-    directives: [ContactListComponent, HTTPTestComponent, NewContactComponent, ParentChildComponent, PipesComponent, ROUTER_DIRECTIVES]
+    directives: [ContactListComponent, HTTPTestComponent, NewContactComponent, ParentChildComponent, PipesComponent, DependencyComponent, ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
@@ -34,6 +38,8 @@ import {PipesComponent} from './pipes.component';
     {path: '/newcontactsbuilder', name: 'NewContactFormbuilder', component: NewContactFormbuilderComponent},
     {path: '/parentchild', name: 'ParentChild', component: ParentChildComponent},  
     {path: '/pipes', name: 'Pipes', component: PipesComponent},  
+    {path: '/dependency', name: 'Dependency', component: DependencyComponent},  
+    {path: '/jquery', name: 'Jquery', component: JqueryAppComponent},  
 ])
 
 export class AppComponent {
