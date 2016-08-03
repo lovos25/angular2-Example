@@ -10,7 +10,7 @@ import {DataService} from './data.service';
         <input type="text" #newItem /> 
         <button (click)="onAddItem(newItem.value)">Add</button>  
     `,
-    //providers: [DataService] 
+    providers: [DataService] 
 })
 
 export class Component2Component {
